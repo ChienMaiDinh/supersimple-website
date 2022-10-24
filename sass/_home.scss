@@ -12,12 +12,12 @@
 /* -- token-box css -- */
 
 .token-box {
+    max-width: 100%;
+    display: inline-block;
     padding: 2rem 30px;
-    border: 2px solid transparent;
+    margin-bottom: 30px;
     @include border-radius(10px);
-    @include content-gradient(135deg, $bg-color-3, $bg-color-2);
-    background-repeat: no-repeat;
-    transition: all .5s;
+    @include content-gradient(135deg, #49138C, #341477);
     h3 {
         margin-bottom: 10px;
     }
@@ -36,42 +36,16 @@
             display: block;
             font-family: $secondary-font;
             font-size: 3rem;
-            line-height: 8.5rem;
+            line-height: 9rem;
             color: #fff;
             font-weight: 400;
             background-color: #2B0C65;
             @include border-radius(10px);
-            margin-bottom: 2.2rem;
-            padding: .5rem 1.5rem 0;
+            margin-bottom: 1rem;
+            padding: 0 1.5rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-    }
-}
-
-.token-slider .token-box,
-.countdown-box .token-box {
-    max-width: 100%;
-    display: inline-block;
-}
-
-.token-slider-wrapper .token-box {
-    border: none;
-}
-
-.token-slider {
-    .token-box {
-        opacity: .5;
-    }
-    .slick-current {
-        .token-box {
-            opacity: 1;
-        }
-        +.slick-slide {
-            .token-box {
-                opacity: 1;
-            }
         }
     }
 }
@@ -80,12 +54,13 @@
 
 .countdown-box {
     width: 100%;
-    position: absolute;
+    position: absolute; // z-index: 9;
 }
 
 #clock {
+    color: red;
     font-size: 30px;
-    @include flexbox();
+    display: flex;
     div {
         width: 9rem;
         margin-right: 10px;
@@ -94,18 +69,17 @@
         color: $para-color;
         font-weight: 300;
         text-align: center;
-        margin-bottom: 1.8rem;
+        margin-bottom: 3rem;
         span {
             display: block;
             font-family: $secondary-font;
             font-size: 5rem;
-            line-height: 8rem;
+            line-height: 9rem;
             color: #fff;
             font-weight: 400;
             background-color: #2B0C65;
             @include border-radius(10px);
-            margin-bottom: .6rem;
-            padding-top: 1rem;
+            margin-bottom: 6px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -128,7 +102,7 @@
     height: 2rem;
     background-color: #2b0c65;
     @include border-radius(10px);
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
 }
 
 .progress-bar {
@@ -148,12 +122,11 @@
 
 /* -- Token slider css -- */
 
-.token-slider-wrapper {
-    position: relative;
-    padding-bottom: 2.7rem;
-}
-
 .token-slider {
+    // position: absolute;
+    // top: 0;
+    // left: 460px;
+    // display: none;
     padding-left: calc( (100% - 1110px) / 2 + 480px);
     .token-box {
         width: 100%;
@@ -162,13 +135,9 @@
             text-align: left;
         }
         .btn {
-            margin-bottom: .6rem;
+            margin-bottom: 1.4rem;
         }
     }
-}
-
-.slick-dotted.slick-slider {
-    margin-bottom: 0;
 }
 
 .slick-slider {
@@ -206,22 +175,27 @@
 
 /* --Homepage features section css -- */
 
-.radial-bg__features {
-    position: absolute;
-    top: 100px;
-    right: 0;
-    -webkit-transform: translateX(50%);
-    transform: translateX(50%);
-}
-
-.feature-wrapper {
-    padding-top: 3rem;
+.features {
+    padding: 4rem 0 1rem;
+    position: relative;
+    .radial-bg {
+        position: absolute;
+        top: 100px;
+        right: 0;
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+    }
 }
 
 .feature-content {
+    padding: 4rem 0;
+    .text-content {
+        margin-bottom: 3rem;
+    }
     .img-container {
         height: 100%;
         position: relative;
+        margin-bottom: 3rem;
         text-align: right;
     }
     .order-md-1 {
@@ -229,32 +203,15 @@
             text-align: left;
         }
     }
-    &:last-child {
-        padding-bottom: 4.6rem;
-    }
-}
-
-.feature-content__ico-funding {
-    text-align: left;
-    .img-container {
-        text-align: center;
-    }
 }
 
 /* --Homepage benefits-content section css -- */
 
-.benefits-of-solution {
-    padding-bottom: 2rem;
-    [class^="col-"] {
-        margin-bottom: 3rem;
-    }
-}
-
 .benefits-content {
-    height: 100%;
     border: 2px solid #403aa3;
     padding: 3rem 3rem 1rem 12.5rem;
     @include border-radius(10px);
+    margin-bottom: 30px;
     position: relative;
     transition: all .3s;
     i {
@@ -279,24 +236,15 @@
 /* -- Homepage roadmap section css -- */
 
 .roadmap-to-success {
-    padding-bottom: 0;
-    .section-heading {
-        margin-bottom: 3.6rem;
+    .radial-bg {
+        left: 0;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 }
 
-.radial-bg__roadmap {
-    left: 0;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
 /* -- Homepage crowdsale section css  -- */
-
-.crowdsale {
-    padding-bottom: 0;
-}
 
 .token-info {
     border: 2px solid $btn-color;
@@ -311,7 +259,7 @@
             color: $para-color;
             font-weight: 300;
             text-align: center;
-            padding: 10px;
+            padding: 10px 0;
             span {
                 font-weight: 400;
                 color: #fff;
@@ -369,17 +317,15 @@
     fill: #4039d4;
     stroke: #4039d4;
 }
-
 .highcharts-tooltip-box {
-    fill: #fff;
-    fill-opacity: 0.6;
+	fill: #fff;
+	fill-opacity: 0.6;
     stroke-width: 0;
 }
 
 .highcharts-tooltip text {
-    fill: white;
+	fill: white;
 }
-
 .highcharts-data-label-connector.highcharts-color-1 {
     stroke: #4039d4;
 }
@@ -448,29 +394,27 @@
 /* -- Homapage team section css -- */
 
 .team {
-    padding-top: 6.2rem;
-    padding-bottom: 0;
+    padding-bottom: 2rem;
+    .radial-bg {
+        top: 50%;
+        right: 0;
+        transform: translate(50%, -50%);
+    }
 }
 
-.radial-bg__team,
-.radial-bg__funding,
-.radial-bg__blog {
-    top: 50%;
-    right: 0;
-    transform: translate(50%, -50%);
-}
-
-.common-tab {
+.team-tab {
     text-align: center;
     .nav {
         border: 2px solid $btn-color;
-        @include border-radius($radius);
-        @include justify-content(space-between);
-        margin: 0 auto 5rem;
+        @include border-radius($radius); // @include justify-content(center);
+        display: inline-block;
+        margin: 0 auto 6rem;
         overflow: hidden;
         li {
+            display: inline-block;
             a {
                 background-color: transparent;
+                min-width: 28rem;
                 height: 100%;
                 font-size: 1.8rem;
                 line-height: 2.8rem;
@@ -479,92 +423,11 @@
                 text-align: center;
                 padding: 10px 2rem;
                 border: none;
-                border-right: 2px solid $btn-color;
                 @include border-radius(0);
                 &.active {
                     background-color: $btn-color;
                     color: #fff;
-                    border-color: $btn-color;
                 }
-                &:hover {
-                    border-color: $btn-color;
-                }
-            }
-            &:last-child a {
-                border: none;
-            }
-        }
-    }
-    &.team-tab {
-        .nav {
-            max-width: 57rem;
-        }
-    }
-}
-
-.modal {
-    padding: 15px !important;
-    background: rgba($color: #000000, $alpha: 0.5);
-}
-
-.modal-dialog {
-    max-width: 60rem;
-}
-
-.modal-open {
-    padding-right: 0 !important;
-}
-
-.modal-content {
-    padding: 50px;
-    text-align: left;
-    background: $bg-color;
-    @include border-radius($radius);
-    overflow: hidden;
-    .modal-body {
-        padding: 0;
-        .img-container {
-            margin-bottom: 3.6rem;
-        }
-    }
-    .close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 4rem;
-        height: 4rem;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 4rem;
-        color: #fff;
-        text-shadow: none;
-        &:hover {
-            color: $action-color;
-        }
-    }
-}
-
-.member-details {
-    padding: 0 0 0 20px;
-    h3 {
-        line-height: 3.6rem;
-        margin-bottom: 1.6rem;
-        span {
-            display: block;
-            font-size: 1.6rem;
-            color: $para-color;
-        }
-    }
-    p {
-        font-weight: 300;
-        margin-bottom: 2rem;
-    }
-    .social-icons {
-        margin-top: 3rem;
-        a {
-            color: $para-color;
-            &:hover {
-                color: $action-color;
             }
         }
     }
@@ -573,21 +436,13 @@
 /* -- Latest-blog css -- */
 
 .latest-blog {
-    padding-bottom: 0;
-}
-
-.img-card__blog {
-    h5 {
-        span {
-            margin-bottom: 6px;
-        }
-    }
+    padding-bottom: 2rem;
 }
 
 /* -- Partners section css -- */
 
 .trusted-partners {
-    padding-bottom: 0;
+    padding-bottom: 3rem;
 }
 
 .partners {
@@ -598,10 +453,7 @@
         max-width: 20%;
         text-align: center;
         padding: 0 15px;
-        margin-bottom: 4rem;
-        img {
-            @include border-radius(0);
-        }
+        margin-bottom: 5rem;
     }
 }
 
@@ -609,26 +461,18 @@
 
 .roadmap-container {
     position: relative;
-    padding: 0 0 4.5rem;
+    padding-top: 55px;
 }
 
 .roadmap-line {
     fill: none;
     stroke-miterlimit: 10;
     stroke-width: 2px;
-    width: 100%;
-    height: 2px;
     stroke: url(#linear-gradient);
-    position: relative;
-    z-index: 9;
 }
 
 .roadmap-line-path {
     opacity: 0;
-    height: 2px;
-    fill: none;
-    stroke-width: 4px;
-    width: 100%;
 }
 
 .roadmap-label {
@@ -639,16 +483,30 @@
     font-weight: 300;
     text-align: center;
     opacity: 0;
-    cursor: pointer;
     transition: all .5s;
     &.active {
         opacity: 1;
     }
-    &:nth-last-of-type(odd) {
-        margin-bottom: 115px;
+    &.l-1 {
+        top: -146px;
     }
-    &:nth-last-of-type(even) {
-        margin-bottom: 175px;
+    &.l-2 {
+        top: -118px;
+    }
+    &.l-3 {
+        top: -75px;
+    }
+    &.l-4 {
+        top: -131px;
+    }
+    &.l-5 {
+        top: -140px;
+    }
+    &.l-6 {
+        top: -79px;
+    }
+    &.l-7 {
+        top: -105px;
     }
     span {
         display: block;
@@ -659,75 +517,31 @@
     }
     .data {
         width: 100%;
-        z-index: 7;
+        transition: all .5s;
+        position: absolute;
+        top: calc(100% + 20px);
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
         .line {
             content: " ";
             display: block;
             position: absolute;
-            top: calc(100% + 25px);
+            top: calc(100% + 20px);
             left: 50%;
             width: 1px;
-            height: 100px;
-            background: $action-color;
+            height: 0;
+            background: #fff;
             transition: all .5s;
-            z-index: 7;
         }
-        .card {
+        p {
             position: absolute;
-            top: calc(100% + 56px);
+            top: calc(100% + 140px);
             left: 50%;
-            width: 44.5rem;
             -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+            opacity: 0;
             transition: all .5;
-            z-index: 10;
-            display: none;
-            border: none;
-            @include border-radius($radius);
-            @include box-shadow(0, 0, 20px, rgba(0, 0, 0, .2));
-            overflow: hidden;
-            .img-container {
-                display: block;
-                img {
-                    @include border-radius(0);
-                }
-            }
-            .card-header {
-                background: transparent;
-                padding: 2.4rem 3rem 1rem;
-                border: none;
-                a {
-                    color: $btn-color;
-                    &:hover {
-                        color: $action-color;
-                    }
-                }
-            }
-            .card-body {
-                padding: 0 3rem 2.6rem;
-                p {
-                    color: #4a4a4a;
-                    margin-bottom: 1rem;
-                }
-                .btn-link {
-                    font-size: 1.5rem;
-                    i {
-                        font-size: 1.2rem;
-                        position: relative;
-                        top: 1px;
-                    }
-                }
-            }
-        }
-    }
-    &:nth-last-of-type(odd) {
-        .data .line {
-            height: 100px;
-        }
-    }
-    &:nth-last-of-type(even) {
-        .data .line {
-            height: 160px;
         }
     }
     &::before,
@@ -743,7 +557,6 @@
         @include border-radius(50%);
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
-        transition: all .5s;
     }
     &::after {
         width: 20px;
@@ -752,37 +565,9 @@
         border: 1px solid $action-color;
         bottom: -31px;
     }
-    &.glow {
-        &::before {
-            background-color: $bg-color;
-        }
-        &::after {
-            background-color: $action-color;
-            border-color: $action-color;
-            z-index: -1;
-        }
-    }
-    &:first-child {
-        .card {
-            left: 3rem;
-            transform: translateX(0);
-        }
-    }
-    &:last-child {
-        .card {
-            left: auto;
-            right: 3rem;
-            transform: translateX(0);
-        }
-    }
-    &:hover {
-        &::before {
-            background-color: $bg-color;
-        }
-        &::after {
-            background-color: $action-color;
-            border-color: $action-color;
-            z-index: -1;
+    &.glow{
+        &::after{
+            @include box-shadow(0, 2px, 7px, rgba(79,211,211,0.6));
         }
     }
 }

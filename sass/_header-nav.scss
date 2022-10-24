@@ -1,12 +1,14 @@
 /* -- Header navbar css
 -------------------------------------- -- */
-
-.navbar {
+.navbar{
     width: 100%;
     background: transparent;
     padding: 4rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
 }
-
 .navbar-toggler {
     border: none;
     outline: none;
@@ -21,7 +23,7 @@
             display: none;
         }
     }
-    &:focus {
+    &:focus{
         outline: none;
     }
 }
@@ -35,11 +37,11 @@
             color: #fff;
             font-weight: 500;
             position: relative;
-            &:not(.btn)::before {
+            &:not(.btn)::before{
                 content: " ";
                 position: absolute;
                 left: -1.3rem;
-                top: 1.6rem;
+                top: 1.7rem;
                 width: .8rem;
                 height: .8rem;
                 display: block;
@@ -49,52 +51,24 @@
                 transform: scale(0);
                 transition: all .3s;
             }
-            &:hover,
-            &.active {
+            &:hover{
                 color: $action-color;
-                &:not(.btn)::before {
+                &:not(.btn)::before{
                     -webkit-transform: scale(1);
                     transform: scale(1);
                 }
             }
         }
-        .btn-small {
+        .btn-small{
             font-size: 1.6rem;
             line-height: 4rem;
-            &:hover {
+            &:hover{
                 color: #fff;
             }
         }
+        
     }
     .dropdown-menu a {
         color: $bg-color;
     }
-}
-
-.navbar-brand {
-    img {
-        @include border-radius(0);
-    }
-}
-
-.navbar button .toggler-icon-bar {
-    -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
-}
-
-.navbar button.change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-7px, 5px);
-    -ms-transform: rotate(-45deg) translate(-7px, 5px);
-    transform: rotate(-45deg) translate(-7px, 5px);
-}
-
-.navbar button.change .bar2 {
-    opacity: 0;
-}
-
-.navbar button.change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -6px);
-    -ms-transform: rotate(45deg) translate(-8px, -6px);
-    transform: rotate(45deg) translate(-8px, -6px);
 }

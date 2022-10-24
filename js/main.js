@@ -1,55 +1,76 @@
-jQuery(function ($) {
+/*-- Strict mode enabled --*/
+"use strict";
 
-    /*-- Strict mode enabled --*/
-    "use strict";
-    var _document = $(document),
-        _window = $(window),
-        _body = $("body");
+$(function () {
+
+    var _window = $(window),
+        _document = $(document),
+        _body = $('body');
 
     //animated navbar-toggler button
     _document.on('click', '.navbar .navbar-toggler', function () {
         $(this).toggleClass("change");
     });
 
-    _document.on('click', function (e) {
-        var _navMenu = $('.navbar-nav li');
-        if ($('.navbar-collapse').hasClass('show')) {
-            if (!_navMenu.is(e.target) && _navMenu.has(e.target).length === 0) {
-                $('.navbar-collapse').removeClass('show');
-                $(".navbar-toggler").removeClass('change');
+    _document.on('click', '.o-language .dropdown-toggle', function (e) {
+        if (_window.width() < 768) {
+            e.preventDefault();
+            $(this).next('.dropdown-menu').slideToggle();
+        }
+    });
+
+    //Background image rotation on scroll
+    function AnimateRotate(d) {
+        var elem = $(".banner-poly-bg");
+
+        $({
+            deg: 0
+        }).animate({
+            deg: d
+        }, {
+            duration: 2000,
+            step: function (now) {
+                elem.css({
+                    transform: "rotate(" + now + "deg)"
+                });
+            }
+        });
+    }
+
+    // Add scrollspy to <body>
+    $('body').scrollspy({
+        target: ".navbar-nav",
+        offset: 100
+    });
+
+    //script for page scroll to top and bottom
+    _document.on('click', '.navbar-nav li a:not(.dropdown-toggle),.footer-widget li a, .page-scroll', function () {
+        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 80
+                }, 800, 'easeInOutExpo');
+                return false;
             }
         }
     });
 
-    //script for box equal height
-    var maxHeight = 0;
-    $(".equalHeight").each(function () {
-        if ($(this).height() > maxHeight) {
-            maxHeight = $(this).height();
-        }
+    //Wow js
+    var wow = new WOW({
+        boxClass: 'wow', // animated element css class (default is wow)
+        animateClass: 'animated', // animation css class (default is animated)
+        offset: 200, // distance to the element when triggering the animation (default is 0)
+        mobile: true, // trigger animations on mobile devices (default is true)
+        live: true, // act on asynchronously loaded content (default is true)
+        callback: function (box) {
+            // the callback is fired every time an animation is started
+            // the argument that is passed in is the DOM node being animated
+        },
+        scrollContainer: null // optional scroll container selector, otherwise use window
     });
-    $(".equalHeight").height(maxHeight);
-
-    //Video modal
-    $('.video-popup').magnificPopup({
-        type: 'iframe',
-        mainClass: 'mfp-with-zoom',
-        iframe: {
-            markup: '<div class="mfp-iframe-scaler">' +
-                '<div class="mfp-close"></div>' +
-                '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
-                '</div>',
-            patterns: {
-                youtube: {
-                    index: 'youtube.com/',
-                    id: 'v=',
-                    src: '//www.youtube.com/embed/%id%?autoplay=1'
-                }
-            },
-            srcAction: 'iframe_src'
-        }
-
-    });
+    wow.init();
 
     //jQuery countdown plugin
     $('#clock').countdown('2020/10/10').on('update.countdown', function (event) {
@@ -61,12 +82,24 @@ jQuery(function ($) {
         var $this = $(this).html(event.strftime(_DateInput));
     });
 
-    // Token slider 
-    $('.token-slider .carousel-container').slick({
-        dots: true,
+    //progress bar
+    $(".progress").each(function () {
+        $(this).waypoint(function () {
+            $('.progress-bar').progressbar({
+                transition_delay: 100
+            });
+        }, {
+            triggerOnce: true,
+            offset: 'bottom-in-view'
+        });
+    });
+
+    // Clients slider
+    $('.c-onepage-clients-slider').slick({
+        // dots: true,
         infinite: true,
         speed: 200,
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -108,137 +141,192 @@ jQuery(function ($) {
         ]
     });
 
-    //Highchart
-    if ($('.pie-chart').length > 0) {
-        Highcharts.chart('container', {
-            chart: {
-                type: 'pie',
-                options3d: {
-                    enabled: true,
-                    alpha: 45
+    //script for popup video modal 
+    $('.video-popup').magnificPopup({
+        type: 'iframe',
+        iframe: {
+            markup: '<div class="mfp-iframe-scaler">' +
+                '<div class="mfp-close">fssdfsdf</div>' +
+                '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
+                '</div>',
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: '//www.youtube.com/embed/%id%?autoplay=1'
                 }
             },
-            title: {
-                text: 'Contents of Highsoft\'s weekly fruit delivery'
-            },
-            subtitle: {
-                text: '3D donut in Highcharts'
-            },
-            plotOptions: {
-                pie: {
-                    innerSize: 100,
-                    depth: 45
-                }
-            },
-            series: [{
-                name: 'Delivered amount',
-                data: [
-                    ['Presale 20%', 7.2],
-                    ['Reserve 10%', 3.6],
-                    ['Token Sale 50%', 18],
-                    ['Bounties 10%', 3.6],
-                    ['Dispensaries 5%', 1.8],
-                    ['Advisory Board 5%', 1.8]
-                ]
-            }]
+            srcAction: 'iframe_src'
+        },
+        closeMarkup: '<button title="%title%" type="button" class="mfp-close">x</button>',
+        mainClass: 'mfp-fade',
+        zoom: {
+            enabled: true, // By default it's false, so don't forget to enable it
+            duration: 300, // duration of the effect, in milliseconds
+            easing: 'ease-in-out', // CSS transition easing function
+            // The "opener" function should return the element from which popup will be zoomed in
+            // and to which popup will be scaled down
+            // By defailt it looks for an image tag:
+            opener: function (openerElement) {
+                // openerElement is the element on which popup was initialized, in this case its <a> tag
+                // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
+            }
+        }
+    });
+
+    $('.o-roadmap').each(function () {
+        $(this).on('click', ".o-common-card", function (e) {
+            e.preventDefault();
+            $(this).find('.collapse-txt').slideToggle("3000");
+            $(this).find('.move-down').toggleClass("rotate");
         });
+    });
+
+    //pie chart
+    AmCharts.makeChart("chartdiv", {
+        "type": "pie",
+        "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+        "innerRadius": "40%",
+        "autoMargins": false,
+        "addClassNames": true,
+        "svgIcons": false,
+        "colors": [
+            "#448aff",
+            "#543bcc",
+            "#07d79c",
+            "#f5354e",
+            "#ff9b53",
+            "#B0DE09",
+            "#04D215",
+            "#0D8ECF",
+            "#0D52D1",
+            "#2A0CD0",
+            "#8A0CCF",
+            "#CD0D74",
+            "#754DEB",
+            "#DDDDDD",
+            "#999999",
+            "#333333",
+            "#000000",
+            "#57032A",
+            "#CA9726",
+            "#990000",
+            "#4B0C25"
+        ],
+        "labelsEnabled": false,
+        "titleField": "category",
+        "valueField": "column-1",
+        "startDuration": 0,
+        "allLabels": [],
+        "balloon": {},
+        "titles": [],
+        "dataProvider": [{
+                "category": "Advisory Board",
+                "column-1": "0.5"
+            },
+            {
+                "category": "Dispensaries",
+                "column-1": "0.5"
+            },
+            {
+                "category": "Bounties",
+                "column-1": "1"
+            },
+            {
+                "category": "Token Sale",
+                "column-1": "5"
+            },
+            {
+                "category": "Presel",
+                "column-1": "2"
+            },
+            {
+                "category": "Reserve",
+                "column-1": "1"
+            }
+        ]
+    });
+
+    // Chart
+    (function (b, i, t, C, O, I, N) {
+        window.addEventListener('load', function () {
+            if (b.getElementById(C)) return;
+            I = b.createElement(i), N = b.getElementsByTagName(i)[0];
+            I.src = t;
+            I.id = C;
+            N.parentNode.insertBefore(I, N);
+        }, false)
+    });
+
+    //currency converter
+    _document.on('click', '.o-currencies span, .o-coins span', function () {
+        $(this).prevAll().removeClass('active');
+        $(this).nextAll().removeClass('active');
+        $(this).addClass('active');
+        _convertCurrency();
+
+    });
+
+    function _convertCurrency() {
+        var _oConverter = $('.o-converter-tab .tab-pane.active'),
+            _inputAmount = _oConverter.find('.input-amount').val(),
+            _pattern = /^[0-9]*$/,
+            _usd = "$",
+            _eur = "€",
+            _isValid = _pattern.test(_oConverter.find('.input-amount').val()),
+            _getInputAmount = parseInt(_oConverter.find('.input-amount').val());
+
+        if (_oConverter.find('.usd').hasClass('active')) {
+            _oConverter.find('.currency-sign').text(_usd);
+            var _cValue = parseInt(_oConverter.find('.o-coins').find('span.active').attr('data-value-usd'));
+        } else {
+            _oConverter.find('.currency-sign').text(_eur);
+            var _cValue = parseInt(_oConverter.find('.o-coins').find('span.active').attr('data-value'));
+        }
+        var _getTotal = _getInputAmount * _cValue;
+
+        if (!_isValid || _oConverter.find('.input-amount').val() === "" || _oConverter.find('.input-amount').val() == undefined) {
+            _oConverter.find('.value-err').fadeIn('500');
+            $('.input-amount').val("");
+        } else {
+            _oConverter.find('.currency-total').text(_getTotal);
+            _oConverter.find('.value-err').fadeOut('500');
+        }
     }
 
-    //SVG Line animation
-    $(".roadmap-to-success").each(function () {
-        $(this).waypoint(function () {
-            var _svgPath = $('.roadmap-line-path'),
-                _svgPathLength = $('.roadmap-line-path').get(0).getTotalLength(),
-                _labelLength = $('.roadmap-label').length;
+    $('.o-converter').on('click', '.btn', function () {
+        _convertCurrency();
+    });
 
-            _svgPath.css({
-                'opacity': '1',
-                'stroke-dashoffset': _svgPathLength,
-                'stroke-dasharray': _svgPathLength
-            });
-
-            setTimeout(function () {
-                _svgPath.animate({
-                    "stroke-dashoffset": _svgPathLength
-                }, 0, function () {
-                    _svgPath.animate({
-                        "stroke-dashoffset": '0px'
-                    }, {
-                        duration: 1500,
-                        // easing: 'linear',
-                        step: function () {
-                            var a = parseInt(_svgPath.css("stroke-dashoffset"));
-                            for (var i = 0; i < _svgPathLength; i++) {
-                                if (a < _svgPathLength * (_labelLength - i) / _labelLength) {
-                                    $(".roadmap-label.l-" + (i + 1)).fadeIn().addClass("active");
-                                }
-                            }
-                        }
-                    }, function () {
-                        //callback ...
-                    });
-                });
-            });
-            this.destroy();
-        }, {
-            triggerOnce: true,
-            offset: 'bottom-in-view'
-        });
+    $('.o-converter').on('focus keyup blur', 'input', function () {
+        $(this).next('.value-err').fadeOut('500');
     });
 
 
-    //Show data on click event
-    var _roadmapContainer = $('.roadmap-container'),
-        _roadMapLabel = $('.roadmap-label');
-
-    _roadmapContainer.on('click', '.roadmap-label', function () {
-        if ($(this).find('.data.active').length === 0) {
-            //remove
-            _roadmapContainer.find('.data').removeClass('active');
-            $(this).find('.data').addClass('active');
-            _roadMapLabel.removeClass('glow');
-            $(this).addClass('glow');
-
-            if (_window.width() < 768) {
-                _roadmapContainer.find('.data .card').slideUp();
-                $(this).find('.data .card').slideDown(function () {
-                    $('html, body').animate({
-                        scrollTop: $(this).offset().top - 90
-                    }, 500);
-                });
-
-            } else {
-                _roadmapContainer.find('.data .card').fadeOut("slow");
-                $(this).find('.data .card').fadeIn("slow");
-            }
+    //flip map
+    var _txt = '<i class="icon-Store"></i>VIEW MAP',
+        _alterTxt = '<i class="icon-mail"></i>CONTACT US';
+    $.fn.extend({
+        toggleText: function (a, b) {
+            return this.html(this.html() == b ? a : b);
         }
     });
 
-    _document.on('click', function (e) {
-        if (!_roadMapLabel.is(e.target) && _roadMapLabel.has(e.target).length === 0) {
-            _roadmapContainer.find('.data').removeClass('active');
-            _roadMapLabel.removeClass('glow');
-            if (_window.width() < 768) {
-                _roadmapContainer.find('.data .card').slideUp();
-            } else {
-                _roadmapContainer.find('.data .card').fadeOut();
-            }
+    $('.o-contact-info').on('click', '.btn', function (e) {
+        e.preventDefault();
+        $('.flip-container').toggleClass('flip-me');
+        $(".o-contact-info .btn").toggleText(_txt, _alterTxt);
+
+        if (_window.width() < 768) {
+            $('html, body').animate({
+                scrollTop: $(".flip-container").offset().top - 100
+            }, 1000);
         }
     });
-
-    // Contact Form
-    $('.contact-form').on('focus', 'input,textarea', function (e) {
-        $(this).parent('.form-group').addClass('focused');
-    });
-
-    $('.contact-form').on('blur', 'input,textarea', function (e) {
-        if (!$(this).val()) {
-            $(this).parent('.form-group').removeClass('focused');
-        }
-    })
 
     //Global Form validation
-    $('.contact-form').on('submit', function (e) {
+    $('.o-contact-form').on('submit', function (e) {
         e.preventDefault();
         var _self = $(this),
             data = $(this).serialize(),
@@ -259,103 +347,18 @@ jQuery(function ($) {
             success: function (data) {
                 $('.submit-loading-img').css('display', 'none');
                 _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
-
                 if (data.code == false) {
                     _self.closest('div').find('[name="' + data.field + '"]').addClass('form-success');
-                    _self.closest('div').find('[name="' + data.field + '"]').parent().after('<div class="err-msg">*' + data.err + '</div>');
+                    _self.closest('div').find('[name="' + data.field + '"]').after('<div class="err-msg">*' + data.err + '</div>');
                 } else {
                     _self.find('textarea:last-child').after('<div class="success-msg">' + data.success + '</div>');
                     _self[0].reset();
-                    $('.contact-form .form-group').removeClass('focused');
                     setTimeout(function () {
                         $('.success-msg').fadeOut('slow');
                     }, 5000);
                 }
             }
         });
-    });
-
-    //progress bar
-    $(".progress").each(function () {
-        $(this).waypoint(function () {
-            $('.progress-bar').progressbar({
-                transition_delay: 100
-            });
-        }, {
-            triggerOnce: true,
-            offset: 'bottom-in-view'
-        });
-    });
-
-    // Jump to bookmark
-    var _anim = function () {
-        $('html, body').animate({
-            scrollTop: $('.ico-funding').offset().top
-        }, 800, 'easeInOutExpo');
-    }
-
-
-    var _commonTab = $('.common-tab .nav li a'),
-        _tabPane = $('.tab-pane'),
-        _footerItem = $('.footer-nav li a');
-
-    _window.on('load', function () {
-        var loc = window.location.href;
-
-        if (/tab-campaign/.test(loc)) {
-            _commonTab.removeClass('active');
-            _tabPane.removeClass('show active');
-            $('.common-tab .nav li a[href^="#tab-campaign"]').addClass('active');
-            $('.tab-pane#tab-campaign').addClass('show active');
-            _footerItem.removeClass('active');
-            $('.footer-nav li a[href^="#tab-campaign"]').addClass('active');
-            _anim();
-        } else if (/tab-faqs/.test(loc)) {
-            _commonTab.removeClass('active');
-            _tabPane.removeClass('show active');
-            $('.common-tab .nav li a[href^="#tab-faqs"]').addClass('active');
-            $('.tab-pane#tab-faqs').addClass('show active');
-            _footerItem.removeClass('active');
-            $('.footer-nav li a[href^="#tab-faqs"]').addClass('active');
-            _anim();
-        } else if (/tab-update/.test(loc)) {
-            _commonTab.removeClass('active');
-            _tabPane.removeClass('show active');
-            $('.common-tab .nav li a[href^="#tab-update"]').addClass('active');
-            $('.tab-pane#tab-update').addClass('show active');
-            _footerItem.removeClass('active');
-            $('.footer-nav li a[href^="#tab-update"]').addClass('active');
-            _anim();
-        }
-    });
-
-    //test
-    $('.footer-nav').on('click', 'li a', function () {
-        if ($(this).attr('href') === "#tab-campaign") {
-            _commonTab.removeClass('active');
-            _tabPane.removeClass('show active');
-            $('.common-tab .nav li a[href^="#tab-campaign"]').addClass('active');
-            $('.tab-pane#tab-campaign').addClass('show active');
-            _footerItem.removeClass('active');
-            $('.footer-nav li a[href^="#tab-campaign"]').addClass('active');
-            _anim();
-        } else if ($(this).attr('href') === "#tab-faqs") {
-            _commonTab.removeClass('active');
-            _tabPane.removeClass('show active');
-            $('.common-tab .nav li a[href^="#tab-faqs"]').addClass('active');
-            $('.tab-pane#tab-faqs').addClass('show active');
-            _footerItem.removeClass('active');
-            $('.footer-nav li a[href^="#tab-faqs"]').addClass('active');
-            _anim();
-        } else if ($(this).attr('href') === "#tab-update") {
-            _commonTab.removeClass('active');
-            _tabPane.removeClass('show active');
-            $('.common-tab .nav li a[href^="#tab-update"]').addClass('active');
-            $('.tab-pane#tab-update').addClass('show active');
-            _footerItem.removeClass('active');
-            $('.footer-nav li a[href^="#tab-update"]').addClass('active');
-            _anim();
-        }
     });
 
     // Preloader js
@@ -378,7 +381,73 @@ jQuery(function ($) {
                 }
             }, 20);
     }
+
+    //Close menu when clicked menu-items or outside
+    $(".c-onepage-navbar").on('click', 'ul li a:not(.dropdown-toggle)', function () {
+        $('.navbar-collapse').removeClass('show');
+        $('.navbar-toggler').removeClass('change');
+    });
+
+    _document.on('click', function (e) {
+        var _navMenu = $('.navbar-nav li');
+        if ($('.navbar-collapse').hasClass('show')) {
+            if (!_navMenu.is(e.target) && _navMenu.has(e.target).length === 0) {
+                $('.navbar-collapse').removeClass('show');
+                $(".navbar-toggler").removeClass('change');
+            }
+        }
+    });
+
+    // show hide subnav depending on scroll direction
+    var _position = 0;
+
+    _window.on('scroll', function () {
+        var _scroll = $(this).scrollTop();
+
+        if (_position > _scroll) {
+            $('.banner-poly-bg-1').css({
+                "bottom": "-=5px"
+            });
+            $('.banner-poly-bg-2').css({
+                "bottom": "-=5px"
+            });
+            $('.banner-poly-bg-3').css({
+                "bottom": "-=5px"
+            });
+        } else if (_scroll > _position) {
+            $('.banner-poly-bg-1').css({
+                "bottom": "+=5px"
+            });
+            $('.banner-poly-bg-2').css({
+                "bottom": "+=5px"
+            });
+            $('.banner-poly-bg-3').css({
+                "bottom": "+=5px"
+            });
+        }
+
+        _position = _scroll;
+    });
+
+    //Preloader
     loader();
 
+}());
 
-}(jQuery));
+
+//Google map
+function initMap() {
+    var _location = {
+        lat: 40.712811,
+        lng: -73.997745
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: _location
+    });
+    var marker = new google.maps.Marker({
+        position: _location,
+        map: map
+        // icon: "images/marker.png"
+    });
+}

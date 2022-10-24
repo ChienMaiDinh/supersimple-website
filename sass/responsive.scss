@@ -3,275 +3,472 @@
 
 @import 'variables';
 @import 'mixins';
+@media (min-width: 1301px) {
+    .container {
+        max-width: 1230px;
+    }
+}
+
 @media screen and (max-width: 1600px) {
-    .countdown-box .token-box {
-        padding-bottom: 4rem;
+    #fp-nav {
+        right: 5% !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .c-onepage-navbar li {
+        margin-left: 2rem;
+    }
+    .roadmap-box .o-common-card::after {
+        width: 155px;
+    }
+    .roadmap-box .o-common-card {
+        max-width: 280px;
+    }
+    .o-roadmap .o-common-card::before {
+        right: -170px;
+    }
+    .o-roadmap .roadmap-right .o-common-card::before {
+        left: -170px;
+    }
+    .o-purchased-tokens .sparks.spark- {
+        &1 {
+            left: 202px;
+        }
+        &2 {
+            left: 252px;
+        }
+        &3 {
+            left: 600px;
+        }
+        &4 {
+            left: 862px;
+        }
+        &5 {
+            left: 348px;
+        }
+        &6 {
+            left: 600px;
+        }
+        &7 {
+            left: 793px;
+        }
+        &8 {
+            left: 968px;
+        }
     }
 }
 
 @media screen and (max-width: 1199px) {
-    .navbar-nav li {
-        margin-left: 3rem;
+    .c-onepage-navbar li {
+        margin-left: 1rem;
     }
-    .navbar-nav li a {
-        font-size: 16px;
+    .roadmap-box .o-common-card::after {
+        width: 90px;
     }
-    .navbar-nav li a:not(.btn)::before {
-        top: 15px;
+    .o-roadmap .o-common-card::before {
+        right: -98px;
     }
-    .token-slider {
-        padding-left: calc( (100% - 930px) / 2 + 480px);
+    .o-roadmap .roadmap-right .o-common-card::before {
+        left: -98px;
     }
-    #clock {
-        @include justify-content(center);
-        div {
-            span {
-                font-size: 30px;
-            }
+    .o-purchased-tokens .sparks.spark- {
+        &1 {
+            left: 114px;
+            top: 35px;
+        }
+        &2 {
+            left: 164px;
+            top: 104px;
+        }
+        &3 {
+            left: 512px;
+            top: 72px;
+        }
+        &4 {
+            left: 774px;
+            top: 5px;
+        }
+        &5 {
+            left: 260px;
+            top: 265px;
+        }
+        &6 {
+            left: 703px;
+            top: 135px;
+        }
+        &7 {
+            left: 510px;
+            top: 235px;
+        }
+        &8 {
+            left: 878px;
+            top: 338px;
         }
     }
-    .radial-bg {
-        width: 1000px;
-        height: 1000px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .o-benifits p {
+        font-size: 14px;
+        line-height: 22px;
     }
-    .roadmap-label {
-        &:nth-last-of-type(odd) {
-            .data .line {
-                height: 100px;
-            }
-        }
-        &:nth-last-of-type(even) {
-            .data .line {
-                height: 160px;
-            }
-        }
-    }
-    .roadmap-label .data .card {
-        max-width: 30.5rem;
+    .o-coins span,
+    .o-currencies span {
+        margin-right: 0;
     }
 }
 
 @media screen and (max-width: 991px) {
+    html {
+        font-size: 8px;
+    }
     .navbar-nav {
-        @include content-gradient(135deg, $bg-color-3, $bg-color-2);
+        background: #1a1391;
         padding: 3rem 5rem 5rem;
         margin-top: 4rem;
+        border: 1px solid $bg-color;
     }
-    .navbar-nav li {
-        margin-left: 0;
+    .c-onepage-navbar {
+        padding: 20px 0;
     }
-    .navbar-nav li a {
-        line-height: 4rem;
+    .c-onepage-navbar li a:not(.btn)::before {
+        display: none;
     }
-    .navbar-nav li a:not(.btn)::before {
-        top: 20px;
+    .c-onepage-navbar li a {
+        line-height: 5rem;
     }
-    .navbar-nav li .btn {
-        margin-top: 2rem;
-    }
-    .banner {
-        padding: 0;
-    }
-    .banner-wrapper {
-        display: block !important;
-    }
-    .banner .container {
-        display: block !important;
-        text-align: center;
-    }
-    .banner .img-container {
-        padding: 5rem 25%;
-    }
-    .banner h1 {
-        br {
-            display: none;
-        }
-    }
-    .countdown-box {
-        position: static;
-        text-align: center;
-    }
-    .token-slider {
-        padding-left: 0;
-    }
-    .slick-slider {
-        max-width: 690px;
-        margin: 0 auto 3rem;
-    }
-    .slick-list {
-        margin-left: -15px;
-        margin-right: -15px;
-    }
-    .slick-slider .slick-dots {
-        display: block !important;
-    }
-    .token-box {
+    .c-onepage-navbar li a.btn {
+        margin: 2.5rem 0 2rem;
         width: 100%;
-        text-align: center;
-        &.contact-form {
-            text-align: left;
-            .form-group {
-                label {
-                    font-size: 16px;
-                }
-                &.focused {
-                    label {
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
     }
-    #clock {
-        @include justify-content(center);
-        div {
-            span {
-                font-size: 24px;
-            }
-        }
+    .c-onepage-navbar li a:not(.btn):hover {
+        opacity: .6;
     }
-    .benefits-content {
-        padding-left: 79px;
-    }
-    .benefits-content i {
-        font-size: 4rem;
+    .o-roadmap::after {
         left: 20px;
     }
-    .ico-funding-tab.common-tab {
+    .roadmap-box .o-common-card {
+        margin-left: 50px;
+        margin-bottom: 50px;
+    }
+    .roadmap-box.roadmap-right .o-common-card {
+        margin-left: 50px;
+    }
+    .roadmap-box.roadmap-right {
         padding-right: 0;
     }
-    .ico-funding__token-box-wrapper {
-        margin-left: 0;
+    .roadmap-box .o-common-card::after {
+        left: auto;
+        right: 102%;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
     }
-    .widget {
-        padding: 3.4rem 2rem 1.3rem;
-        .media i {
-            top: -3px;
-        }
+    .o-roadmap .o-common-card::before,
+    .o-roadmap .roadmap-right .o-common-card::before {
+        right: auto;
+        left: -84px;
+        height: calc(100% + 50px);
     }
-    .about-us img {
-        margin-top: 3rem;
+    .roadmap-box::before,
+    .roadmap-box::after,
+    .roadmap-box.active::after {
+        left: 20px;
     }
-    .feature-content__ico-funding img {
+    .fp-table,
+    .fp-tableCell,
+    .fp-scrollable {
+        height: auto !important;
+    }
+    .section {
+        padding: 64px 0 30px;
+    }
+    .o-benifits {
+        margin-bottom: 30px;
+    }
+    .o-common-nav-tab {
+        position: initial;
+        margin-bottom: 50px;
+    }
+    .c-onepage-product .o-common-nav-tab {
+        top: 0;
+    }
+    .c-onepage-product .tab-pane [class^="col-"] {
+        margin-bottom: 30px;
+    }
+    .c-onepage-banner {
+        padding: 160px 0 60px;
+        display: block !important;
+        height: auto;
+        margin-bottom: 0;
+    }
+    .c-onepage-banner .c-onepage-clients {
+        position: initial;
+        margin-top: 100px;
+    }
+    .o-roadmap {
+        padding-bottom: 0;
+    }
+    .c-onepage-about,
+    .c-onepage-team,
+    .o-purchased-tokens,
+    .o-currency-converter,
+    .o-bitcoin-widget,
+    .o-token-distribution {
+        height: auto;
+    }
+    .o-token-distribution {
+        padding: 60px 0 0;
+    }
+    .o-purchased-tokens {
+        padding: 100px 0;
+    }
+    .o-purchased-tokens::before {
+        background-size: 100%;
+    }
+    .team-tab .o-common-nav-tab {
+        margin-top: 30px;
+    }
+    .team-tab .tab-content,
+    .benifits-content .tab-content,
+    .product-tab .tab-content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .team-tab .o-common-card {
+        margin-bottom: 30px;
+    }
+    .c-onepage-token {
+        padding: 0;
+    }
+    p.section-subtitle {
+        margin-bottom: 5.1rem;
+    }
+    .onepage-about-us {
+        padding: 0;
+    }
+    .token-distribution-chart {
+        height: 400px;
+    }
+    .o-converter-tab .tab-content {
+        padding-top: 0;
+    }
+    .onepage-converter.o-common-card {
+        margin-bottom: 45px;
+    }
+    .converted-price {
+        margin-bottom: 50px;
+    }
+    .o-best-price-box {
+        margin-bottom: 30px;
+        height: auto;
+    }
+    .o-bitcoin-widget .btcwdgt-headlines.btcwdgt-light {
+        margin-bottom: 30px !important;
+    }
+    .o-blog-wrapper .btn {
+        margin: 40px 0 30px;
+    }
+    .o-contact-info {
+        margin-bottom: 50px;
+        padding-left: 0;
+    }
+    .flipper .o-form-content {
+        padding-left: 0;
+    }
+    .o-form-content .o-form {
+        max-width: 100%;
+    }
+    .footer-content .c-onepage-clients {
         margin-top: 0;
+        margin-bottom: 45px;
     }
-    .feature-content .text-content {
-        margin-bottom: 4rem;
+    .c-onepage-footer {
+        padding: 12px 0 0;
     }
-    .ico-funding-tab.common-tab {
-        padding-bottom: 3.8rem;
+    .o-footer-nav {
+        padding: 20px 0;
     }
-    .radial-bg {
-        width: 1000px;
-        height: 1000px;
+    .o-footer-bottom {
+        padding-top: 30px;
     }
-    .roadmap-label {
-        &:nth-last-of-type(odd) {
-            .data .line {
-                height: 100px;
-            }
+    .o-credit-cards img {
+        margin-bottom: 20px;
+    }
+    .o-map {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    .o-converter {
+        display: block;
+        text-align: center;
+    }
+    .o-coins,
+    .o-currencies {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .o-currencies {
+        margin-top: 20px;
+    }
+    .o-converter .input-group,
+    .o-converter input {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .o-converter .value-err {
+        width: 100%;
+    }
+    span.currency-sign {
+        margin-right: -.5rem;
+    }
+    .slick-dotted.slick-slider {
+        margin-bottom: 0;
+    }
+    .roadmap-box {
+        max-width: 400px;
+        margin: 0 auto;
+        padding-left: 50px;
+    }
+    .roadmap-box .o-common-card{
+        max-width: auto;
+    }
+    .roadmap-box .o-common-card::after,
+    .roadmap-box.roadmap-right .o-common-card::after {
+        width: 60px;
+        left: -80px;
+        right: auto;
+    }
+    .o-purchased-tokens .sparks.spark- {
+        &1 {
+            left: 101px;
+            top: 40px;
         }
-        &:nth-last-of-type(even) {
-            .data .line {
-                height: 160px;
-            }
+        &2 {
+            left: 136px;
+            top: 90px;
+        }
+        &3 {
+            left: 378px;
+            top: 66px;
+        }
+        &4 {
+            left: 562px;
+            top: 19px;
+        }
+        &5 {
+            left: 200px;
+            top: 209px;
+        }
+        &6 {
+            left: 517px;
+            top: 115px;
+        }
+        &7 {
+            left: 381px;
+            top: 186px;
+        }
+        &8 {
+            left: 640px;
+            top: 260px;
         }
     }
-    .token-slider .token-box,
-    .countdown-box .token-box {
-        margin-bottom: 3rem;
+    .progressbar-block .progress {
+        margin: 0 auto 16px;
     }
-    .modal-content {
-        text-align: left;
+    .o-distribution {
+        text-align: center !important;
     }
-    .social-icons a {
-        font-size: 1.6rem;
+    .amcharts-chart-div {
+        max-width: 100%;
+    }
+    .o-purchased-tokens{
+        margin: 0;
+        min-height: 540px;
+        padding: 60px 0;
+    }
+    .o-contact-block{
+        margin: 0;
+    }
+    .o-common-card.o-newsletter-form{
+        text-align: center;
+        h4{
+            margin-bottom: 10px;
+        }
+        p{
+            margin-bottom: 25px;
+        }
+        .o-newsletter{
+            margin: 0 0 10px;
+        }
+    }
+    .o-newsletter-form-content{
+        margin-bottom: 60px;
     }
 }
 
-@media screen and (max-width: 1024px) {}
+@media screen and (max-width: 1024px) {
+    .o-common-nav-tab {
+        bottom: 5.1rem;
+    }
+}
 
 @media screen and (max-width: 767px) {
-    h1 {
-        font-size: 3rem;
-        line-height: 4.2rem;
+    .section {
+        padding: 18px 0 30px;
     }
-    h2 {
-        font-size: 2.4rem;
-        line-height: 3.6rem;
-        margin-bottom: 1.6rem;
+    h2,
+    .o-details-with-title h2,
+    .big-heading {
+        font-size: 20px;
+        line-height: 30px;
     }
     h3 {
-        font-size: 1.8rem;
-        line-height: 3rem;
-    }
-    h4 {
-        font-size: 1.6rem;
-        line-height: 2.8rem;
+        font-size: 18px;
+        line-height: 28px;
     }
     p {
         font-size: 16px;
-        margin-bottom: 2rem;
     }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        br {
-            display: none;
-        }
+    br {
+        display: none;
     }
-    .section-heading {
-        margin-bottom: 2.9rem;
-        h2 {
-            margin-bottom: 1.6rem;
-        }
-        p {
-            font-size: 18px;
-            line-height: 2.8rem;
-            br {
-                display: none;
-            }
-        }
+    .banner-poly-bg-1,
+    .banner-poly-bg-2,
+    .banner-poly-bg-3 {
+        bottom: 0 !important;
     }
-    .banner-txt h1 {
-        margin-bottom: 1.2rem;
+    .banner-poly-bg-3 .sparks.spark-2 {
+        top: 16%;
+        left: 35.5%;
     }
-    .banner-txt p {
-        margin-bottom: 1.9rem;
+    .banner-poly-bg-3 .sparks.spark-3 {
+        top: 45%;
+        left: 56.2%;
     }
-    .banner .img-container {
-        padding-top: 3rem;
+    .banner-poly-bg-3 .sparks.spark-4 {
+        top: -10%;
+        left: 74.5%;
     }
-    .banner-txt .btn {
-        margin: 1rem 2rem;
+    .banner-poly-bg-3 .sparks.spark-5 {
+        top: 22%;
+        left: 85.5%;
     }
-    .btn-play {
-        margin-left: 0;
-    }
-    .section-padding {
-        padding: 4.3rem 0 3rem;
+    .team-tab .nav li a {
+        min-width: 15rem;
     }
     .banner {
         height: auto;
-        padding: 0;
     }
-    .banner-wrapper {
-        padding: 4rem 0 7.7rem;
+    .banner-txt {
+        text-align: center;
+        margin-bottom: 50px;
     }
-    .banner .img-container {
-        padding-bottom: 0;
-    }
-    .banner-txt p {
-        font-size: 1.8rem;
-    }
-    .banner-wrapper__banner-inner {
-        padding: 3rem;
-    }
-    .token-slider-wrapper {
-        padding-bottom: 2.3rem;
+    .countdown-box {
+        max-width: 100%;
+        margin-right: 0;
     }
     .slick-slider {
         max-width: 540px;
@@ -283,380 +480,242 @@
     .token-slider .token-box h4 {
         text-align: center;
     }
+    .c-onepage-banner .c-onepage-clients {
+        margin-bottom: 30px;
+    }
     .partners .partners-logo {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 25%;
         flex: 0 0 25%;
         max-width: 25%;
     }
-    article {
-        padding-right: 0;
+    .o-common-nav-tab .nav .nav-link {
+        width: auto;
     }
-    .post-info a {
-        line-height: 30px;
+    .c-onepage-banner .fp-scrollable,
+    .c-onepage-banner .fp-scroller {
+        display: block;
     }
-    .post-info a:not(:last-child)::after {
-        top: 4px;
+    .o-coins span,
+    .o-currencies span {
+        font-size: 14px;
+        padding: 0 5px;
     }
-    .feature-content .text-content {
-        margin-bottom: 3.6rem;
+    .converted-price {
+        font-size: 3rem;
     }
-    .benefits-of-solution,
-    .crowdsale,
-    .team,
-    .latest-blog,
-    .trusted-partners {
-        padding-bottom: 0;
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header h2,
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header h4,
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header p.changes,
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header .stats,
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header p.date-wrap {
+        width: 100% !important;
+        position: initial !important;
     }
-    .token-info .col .inner-content {
-        font-size: 13px;
-        line-height: 20px;
-        padding: 10px 3px;
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header .stats,
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header p.date-wrap {
+        height: auto !important;
+        left: 0 !important;
     }
-    .highcharts-label.highcharts-data-label .highcharts-text-outline+tspan {
-        font-size: 10px;
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header .stats {
+        @include flexbox();
+        @include justify-content(space-around);
+        padding: 15px 0 !important;
     }
-    .img-card {
-        margin-bottom: 0;
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header .stats>div {
+        padding: 0 10px !important;
     }
-    .page-footer {
-        padding-top: 5rem;
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header {
+        height: auto !important;
+        background: transparent !important;
+        padding: 0 !important;
     }
-    .radial-bg {
-        width: 400px !important;
-        height: 400px !important;
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header h2 {
+        height: 60px !important;
+        line-height: 50px !important;
     }
-    .about-wrapper {
-        margin-top: 3.1rem;
+    .o-blog-content {
+        margin-bottom: 30px;
     }
-    .purchase-token-banner {
-        margin-top: 4.9rem;
-        margin-bottom: 3rem;
+    .c-onepage-modal .modal-dialog {
+        margin: 30px auto;
     }
-    .purchase-token-banner {
-        padding-top: 3.9rem;
-    }
-    .purchase-token-banner h3 {
-        font-size: 2rem;
-        line-height: 3rem;
+    .c-onepage-modal .modal-body .modal-heading {
+        font-size: 3rem;
+        line-height: 4.2rem;
         margin-bottom: 2rem;
     }
-    .common-tab .nav li a {
-        font-size: 1.5rem;
-    }
-    .ico-funding {
-        padding-top: 8rem;
-    }
-    .common-tab .nav {
-        margin-bottom: 2.7rem;
-    }
-    .ico-funding__token-box-wrapper .token-box:last-child {
-        margin-bottom: 2.8rem;
-    }
-    .ico-funding-tab .accordion {
-        margin-bottom: 1.6rem;
-    }
-    .card-update {
-        margin-bottom: 2.6rem;
-    }
-    .update-wrapper:last-child .card-update {
-        margin-bottom: 4rem;
-    }
-    .blog-page-wrapper {
-        margin-top: 3rem;
-    }
-    article {
-        margin-bottom: 7.4rem;
-        &:last-child {
-            margin-bottom: 8rem;
+    .c-onepage-product .tab-pane [class^="col-"] {
+        text-align: center !important;
+        img {
+            padding: 0 30px 50px;
         }
     }
-    .widget:last-child {
+    .purchase-number span {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    .token-distribution-chart {
+        height: 250px;
+    }
+    .o-newsletter-form p {
+        margin-bottom: 15px;
+    }
+    .o-newsletter-form .o-form .o-newsletter {
+        margin: 0 -10px;
+    }
+    .o-newsletter-form .o-form .o-newsletter .btn {
+        margin: 20px 0 0;
+    }
+    .footer-widget {
+        margin-bottom: 30px;
+    }
+    .o-footer-bottom,
+    .o-terms-privacy {
+        text-align: left !important;
+    }
+    .o-follow-us,
+    .o-footer-bottom p {
+        margin-bottom: 5px;
+    }
+    .o-newsletter-form .o-newsletter {
+        margin-left: -15px;
+    }
+    .o-newsletter-form .o-newsletter .btn {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    .c-onepage-about,
+    .c-onepage-team,
+    .o-purchased-tokens,
+    .o-currency-converter,
+    .o-bitcoin-widget,
+    .o-token-distribution {
+        height: auto;
+    }
+    .c-onepage-roadmap,
+    .c-onepage-product {
+        height: auto;
+    }
+    .o-common-nav-tab.nav-bottom {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .c-onepage-product .tab-pane [class^="col-"] {
         margin-bottom: 0;
     }
-    .banner-wrapper__banner-inner .banner-txt {
+    .onepage-about-us {
+        padding-top: 0;
+    }
+    .fullpage-scroller .c-onepage-roadmap {
+        padding: 20px 0 0 !important;
+    }
+    .c-onepage-token {
+        padding-top: 0 !important;
+    }
+    .c-onepage-footer {
+        padding: 0 0 10px;
+    }
+    .footer-content .c-onepage-clients {
+        margin-bottom: 40px;
+    }
+    .o-footer-bottom {
+        padding-bottom: 25px;
+    }
+    .o-blog-wrapper .btn {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+    #clock div span {
+        width: 6rem;
+        font-size: 3rem;
+        line-height: 6.7rem;
+        height: 6rem;
+    }
+    .o-bitcoin-widget .btcwdgt-chart .btcwdgt-header .stats div span {
+        font-size: 16px !important;
+    }
+    .c-onepage-banner {
+        padding-top: 120px;
         display: block !important;
-        h1 {
-            margin-bottom: 0;
-        }
-    }
-    .contact-form-wrapper {
-        margin-top: 3.7rem;
-    }
-    .contact-form {
-        padding: 3rem 2rem;
-        margin-bottom: 2.9rem;
-    }
-    .info-widget {
-        margin-bottom: 1.9rem;
-    }
-    .info-widget p.address {
-        margin-bottom: 1rem;
-    }
-    .map-tab {
-        padding-top: 4.1rem;
-    }
-    #map-tab-Content {
-        padding-top: 1.3rem;
-    }
-    .contact-form h3 {
-        padding-left: 3.5rem;
-    }
-    .contact-form .form-group label {
-        line-height: 2.8rem;
-    }
-    .info-widget-wrapper {
-        padding-left: 0;
-    }
-    .info-widget:last-child {
-        margin-bottom: 0;
-    }
-    .privacy-content {
-        padding-top: 7.4rem;
         padding-bottom: 0;
     }
-    .blog-page-aside {
-        margin-top: 0;
+    .o-purchased-tokens {
+        min-height: auto;
     }
-    .prev-next {
-        margin-top: 0;
-        margin-bottom: -4px;
-        padding-bottom: 0;
+    .o-roadmap .o-common-card::before,
+    .o-roadmap .roadmap-right .o-common-card::before {
+        left: -44px;
     }
-    .roadmap-line {
+    .roadmap-box .collapse-txt {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .roadmap-box .o-common-card {
+        margin-bottom: 40px;
+    }
+    .c-onepage-banner .c-onepage-clients {
+        margin-top: 26px;
+    }
+    .section .scroll-to-next {
         display: none;
     }
-    .roadmap-container {
-        padding-top: 0;
-        padding-bottom: 2.1rem;
-        margin-top: 0;
-        position: relative;
-        &::after {
-            content: " ";
-            position: absolute;
-            top: 21px;
-            bottom: 40px;
-            left: 50%;
-            display: block;
-            @include content-gradient(to bottom, $grad-color, $grad-c-color);
-            width: 1px;
-            margin-left: -.5px;
-        }
-        .row {
-            display: block;
+    .navbar-nav .nav-link.active {
+        color: $secondary-2-color;
+    }
+    .o-newsletter-form-content {
+        .o-common-card {
+            margin-bottom: 30px;
         }
     }
-    .roadmap-label {
-        font-size: 14px;
-        position: initial;
-        padding: 0 15px !important;
-        margin-bottom: 3rem !important;
-        text-align: left;
-        opacity: 1;
-        .text-content {
-            display: inline-block;
-            text-align: right;
-            width: 50%;
-            padding-right: 3rem;
-        }
-        &:last-child {
-            margin-bottom: 0 !important;
-        }
-        .data {
-            position: relative;
-            top: -37px;
-            left: 0;
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
-            .line {
-                display: none;
-            }
-            .card {
-                position: relative;
-                top: 50px;
-                left: 0;
-                width: 100%;
-                max-width: 100%;
-                -webkit-transform: translateX(0);
-                transform: translateX(0);
-                .card-header {
-                    padding: 2.4rem 1.5rem 1rem;
-                }
-                .card-body {
-                    padding: 0 1.5rem 2.6rem;
-                }
-                img {
-                    width: 100%;
-                }
-            }
-        }
-        &:nth-of-type(even) {
-            text-align: right;
-            .text-content {
-                text-align: left;
-                padding-left: 3rem;
-                padding-right: 0;
-            }
-            .line {
-                margin-left: 0;
-            }
-        }
+    .o-terms-privacy a:first-child,
+    .o-footer-bottom a:first-child {
+        margin-left: 0;
     }
-    .roadmap-to-success {
-        padding-bottom: 0;
+    .o-newsletter-form .o-newsletter input {
+        margin-bottom: 2rem;
     }
-    .roadmap-label::before,
-    .roadmap-label::after {
-        display: none;
+    .o-about-us .img-container {
+        margin-right: 0;
     }
-    .roadmap-label .data::before,
-    .roadmap-label .data::after {
-        content: " ";
-        position: absolute;
-        top: 9px;
-        left: 50%;
-        width: 8px;
-        height: 8px;
-        display: block;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-        background-color: #4FD3D3;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        border-radius: 50%;
+    .benifits-content .tab-pane .row div[class^="col-"]:last-child .o-benifits,
+    .o-roadmap .row div[class^="col-"]:last-child .o-common-card,
+    .o-best-prices .row div[class^="col-"]:last-child .o-best-price-box,
+    .o-bitcoin-widget .btcwdgt-headlines.btcwdgt-light,
+    .flip-container {
+        margin-bottom: 0 !important;
     }
-    .roadmap-label .data::after {
-        top: 3px;
-        width: 20px;
-        height: 20px;
-        background-color: transparent;
-        border: 1px solid #4FD3D3;
-    }
-    .roadmap-label.glow .data::after {
-        -webkit-box-shadow: 0 2px 7px rgba(79, 211, 211, 0.6);
-        -moz-box-shadow: 0 2px 7px rgba(79, 211, 211, 0.6);
-        box-shadow: 0 2px 7px rgba(79, 211, 211, 0.6);
-    }
-    .roadmap-label span {
-        font-size: 16px;
-    }
-    .accordion .card h4 a i {
-        font-size: 1.6rem;
-        line-height: 2.6rem;
-    }
-    .feature-wrapper {
-        padding-top: 0;
-    }
-    .feature-content:last-child {
-        padding-bottom: 3rem;
-    }
-    .feature-content__ico-funding:last-child {
-        padding-bottom: 4rem;
-    }
-    .modal-content .modal-body .img-container {
-        margin-bottom: 4rem;
-    }
-    .member-details {
-        padding-left: 0;
-    }
-    .roadmap-to-success .section-heading {
-        margin-bottom: 2.9rem;
-    }
-    .token-info {
-        margin-bottom: 1.1rem;
-    }
-    .team {
-        padding-top: 2.9rem;
-    }
-    .footer-menu {
-        padding-top: 3.5rem;
-        padding-bottom: 3.2rem;
-        p {
-            margin-bottom: 2.2rem;
-        }
-    }
-    .page-footer img {
-        margin-bottom: 2.4rem;
-    }
-    form.footer-form input[type="email"] {
-        margin-bottom: 3.5rem;
-    }
-    .token-info .col .inner-content span {
-        display: block;
-    }
-    .benefits-content h4 {
-        margin-bottom: 1rem;
-    }
-    .roadmap-to-success .section-heading {
-        margin-bottom: 2.2rem;
-    }
-    .feature-content h2 {
-        margin-bottom: 1.8rem;
-    }
-    #tab-faqs {
-        padding-top: 2px;
-    }
-    .update-wrapper {
-        padding-top: 2px;
-        h3 {
-            margin-bottom: 2.8rem;
-        }
-    }
-    .about-us {
-        margin-bottom: 2px;
-        &:last-child {
-            margin-bottom: 1.5rem;
-        }
-    }
-    .about-us h2 {
-        margin-bottom: 1.8rem;
-    }
-    .about-us p:nth-last-of-type(1) {
+    .product-tab .o-details-with-title p {
         margin-bottom: 0;
     }
-    #team-tab-Content {
-        padding-top: 1.3rem;
-    }
-    .post-info {
-        margin-bottom: 3.4rem;
-    }
-    article .img-container {
-        margin-bottom: 3rem;
-    }
-    article .btn {
+    .o-about-us,
+    .o-contact-block {
         margin-top: 0;
     }
-    .banner-txt .search-form {
-        margin-top: 1rem;
-    }
-    .privacy-content h2,
-    .privacy-content h3 {
-        margin-bottom: 1.8rem;
-    }
-    .privacy-content h3 {
+    .o-currency-converter {
         padding-top: 0;
     }
-    .banner-wrapper__banner-inner.banner-404 .banner-txt h1 {
-        font-size: 4rem;
-        margin-bottom: 1.9rem;
+    .o-token-distribution {
+        padding-bottom: 0;
     }
-    .banner-wrapper__banner-inner.banner-404 {
-        padding-top: 7.9rem;
-        padding-bottom: 7rem;
+    .navbar-nav {
+        max-height: 450px;
+        overflow-y: auto;
     }
-    .banner-404 h3 {
-        margin-bottom: 1.9rem;
+    .countdown-box+.radial-bg {
+        z-index: -1;
     }
-    .img-card h5 span,
-    .roadmap-label .text-content,
-    .member-details h3 span,
-    .token-box .token-price,
-    #clock div,
-    .post-info a,
-    .info-widget p {
-        font-size: 1.4rem;
-        line-height: 2.2rem;
+    .o-credit-cards img {
+        margin-right: 10px;
+    }
+    .common-list {
+        padding-left: 18px;
+        li {
+            list-style-position: initial;
+        }
+    }
+    .o-newsletter-form-content{
+        margin-bottom: 30px;
     }
 }
 
@@ -665,6 +724,16 @@
         padding-left: 15px;
         padding-right: 15px;
     }
+    h1 {
+        font-size: 4rem;
+        line-height: 5rem;
+    }
+    .banner {
+        padding-top: 17rem;
+    }
+    .banner .img-container {
+        padding-top: 2rem;
+    }
     .footer-bottom {
         display: block;
         text-align: center;
@@ -672,12 +741,20 @@
     .dropdown {
         display: inline-block;
     }
-    .modal-content {
-        padding: 3rem;
-        .close {
-            top: 0;
-            right: 0;
-        }
+    .c-onepage-modal .modal-body {
+        padding: 3.5rem 3.5rem .7rem;
+    }
+    .c-onepage-modal .modal-body .close {
+        top: 5px;
+        right: 5px;
+    }
+    .roadmap-box {
+        padding-left: 10px;
+    }
+    .roadmap-box .o-common-card::after,
+    .roadmap-box.roadmap-right .o-common-card::after {
+        width: 45px;
+        left: -45px;
     }
 }
 
@@ -689,26 +766,41 @@
         max-width: 33.333333%;
         margin-bottom: 3rem;
     }
-    .pie-chart {
-        max-height: 300px;
-        overflow: hidden;
-        position: relative;
-    }
-    .highcharts-container {
-        top: -55px;
+    .o-purchased-tokens .sparks.spark- {
+        &1 {
+            left: 56px;
+            top: 90px;
+        }
+        &2 {
+            left: 76px;
+            top: 110px;
+        }
+        &3 {
+            left: 193px;
+            top: 101px;
+        }
+        &4 {
+            left: 284px;
+            top: 75px;
+        }
+        &5 {
+            left: 106px;
+            top: 170px;
+        }
+        &6 {
+            left: 262px;
+            top: 120px;
+        }
+        &7 {
+            left: 195px;
+            top: 160px;
+        }
+        &8 {
+            left: 322px;
+            top: 195px;
+        }
     }
 }
-
-@media screen and (max-width: 430px) {
-    .pie-chart {
-        max-height: 200px;
-    }
-    .highcharts-container {
-        top: -95px;
-    }
-}
-
-@media screen and (max-width: 375px) {}
 
 @media screen and (max-width: 330px) {
     .btn-play {
@@ -716,21 +808,15 @@
     }
 }
 
-@media screen and (min-width: 1025px) {}
-
-@media (min-width: 992px) {
-    .banner-txt {
-        max-width: 56rem;
-    }
-}
-
-@media (min-width: 1280px) and (max-width: 1366px) {}
-
-@media (min-width: 768px) and (max-width: 1023px) {}
+/* -- IE Hacks -- */
 
 @media screen and (min-width:0\0) {
-    .benefits-content i::before,
-    .contact-form h3 i {
+    .o-benifits i,
+    .o-common-card:hover h5 i,
+    .o-follow-us a:hover i {
         background: transparent;
+    }
+    .o-common-card .img-container p {
+        display: block;
     }
 }

@@ -228,6 +228,68 @@
     }
 }
 
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* -- Animation- fadeInUp -- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+/* -- Ripple out effect -- */
+
+@-webkit-keyframes ripple-out {
+    100% {
+        top: -12px;
+        right: -12px;
+        bottom: -12px;
+        left: -12px;
+        opacity: 0;
+    }
+}
+
+@keyframes ripple-out {
+    100% {
+        top: -12px;
+        right: -12px;
+        bottom: -12px;
+        left: -12px;
+        opacity: 0;
+    }
+}
+
+.ripple-out:hover:before,
+.ripple-out:focus:before,
+.ripple-out:active:before {
+    -webkit-animation-name: ripple-out;
+    animation-name: ripple-out;
+}
+
 /* -- Animation fadeIn-- */
 
 @-webkit-keyframes fadeIn {
@@ -236,7 +298,6 @@
     }
     100% {
         opacity: 1;
-        display: block;
     }
 }
 
@@ -246,11 +307,5 @@
     }
     100% {
         opacity: 1;
-        display: block;
     }
-}
-
-.fade-in {
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
 }

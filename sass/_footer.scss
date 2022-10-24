@@ -2,23 +2,15 @@
 -------------------------------------- -- */
 
 footer {
-    position: relative;
-    overflow: hidden;
-}
-
-.radial-bg__footer {
-    bottom: 0;
-    left: 0;
-    -webkit-transform: translate(-50%, 65%);
-    transform: translate(-50%, 65%);
-}
-
-.page-footer {
-    padding: 8rem 0 0;
+    padding-top: 8rem;
+    .radial-bg{
+        bottom: 0;
+        left: 0;
+        transform: translateX(-50%);
+    }
     img {
         max-width: 100%;
         margin-bottom: 4rem;
-        @include border-radius(0);
     }
     h5 {
         margin-bottom: 6px;
@@ -26,18 +18,31 @@ footer {
     p {
         font-size: 1.6rem;
     }
-}
-
-form.footer-form {
-    position: relative;
-    input[type="email"] {
-        margin-bottom: 3rem;
-        padding-right: 20%;
+    form {
+        position: relative;
+        input[type="email"] {
+            margin-bottom: 3rem;
+            padding-right: 20%;
+        }
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            line-height: 44px;
+            color: $btn-color;
+            padding: 0 10px;
+            &:hover {
+                color: $action-color;
+            }
+        }
     }
 }
 
 .footer-menu {
-    padding: 5rem 0 3.6rem;
+    padding: 5.5rem 0 4.1rem;
     position: relative;
     &::before {
         content: " ";
@@ -64,8 +69,7 @@ form.footer-form {
             color: $para-color;
             font-weight: 300;
             transition: all .3s;
-            &:hover,
-            &.active {
+            &:hover {
                 text-decoration: none;
                 color: $action-color;
             }
@@ -77,7 +81,7 @@ form.footer-form {
     @include flexbox();
     @include justify-content(between);
     position: relative;
-    padding: 2.6rem 0 2.3rem;
+    padding: 2.6rem 0;
     &::before {
         content: " ";
         height: 1px;
@@ -89,12 +93,6 @@ form.footer-form {
     }
     p {
         margin-bottom: 0;
-        a{
-            color: $para-color;
-            &:hover{
-                color: $action-color;
-            }
-        }
     }
     .dropdown-toggle {
         font-size: 1.6rem;
@@ -107,10 +105,10 @@ form.footer-form {
         &:hover {
             text-decoration: none;
         }
-        span {
+        span{
             color: #fff;
         }
-        svg {
+        svg{
             color: #fff;
             font-weight: 300;
         }
